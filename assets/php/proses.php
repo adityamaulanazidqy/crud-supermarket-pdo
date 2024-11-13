@@ -31,8 +31,7 @@ if (isset($_GET['delete'])) {
 
         $counter = 1;
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            $updateQuery = "UPDATE barang SET id='$counter' WHERE id=" . $row['id'];
-            mysqli_query($conn, $updateQuery);
+            $updateQuery = $pdo->prepare("UPDATE barang SET id='$counter' WHERE id=" . $row['id']);
             $counter++;
         }
 
